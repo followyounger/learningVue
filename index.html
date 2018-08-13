@@ -52,6 +52,11 @@
 		</p>
 		<p>{{ answer }}</p>
 	</div>
+	<ul id="example-2">
+	  <li v-for="(item, index) in items">
+	    {{ parentMessage }} - {{ index }} - {{ item.message }}
+	  </li>
+	</ul>
 </body>
 
 
@@ -189,6 +194,17 @@
 	          vm.answer = 'Error! Could not reach the API. ' + error
 	        })
 	    }
+	  }
+	})
+
+	var example2 = new Vue({
+      el: '#example-2',
+	  data: {
+	    parentMessage: 'Parent',
+	    items: [
+	      { message: 'Foo' },
+	      { message: 'Bar' }
+	    ]
 	  }
 	})
 </script>
