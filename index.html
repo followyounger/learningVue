@@ -68,6 +68,12 @@
     <div id="example-3">
     	<li v-for="n in evenNumbers">{{ n }}</li>
     </div>
+    <div id="example-4">
+    	<li v-for="n in even(numbers)">{{ n }}</li>
+    </div>
+    <div id="example-5">
+    	<span v-for="n in 10">{{ n }} </span>
+    </div>
 </body>
 
 
@@ -242,4 +248,21 @@
 	    }
 	  }
 	})
+    var example4 = new Vue({
+    	el:"#example-4",
+    	data: {
+    		numbers: [1,2,3,4,5]
+    	},
+    	methods: {
+    		even: function (numbers) {
+    			return numbers.filter(function (number) {
+    				return number % 2 === 0
+    			})
+    		}
+    	}
+    })
+    var example5 = new Vue({
+    	el:"#example-5",
+    })
+
 </script>
