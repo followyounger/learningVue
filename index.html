@@ -57,14 +57,14 @@
 	    {{ parentMessage }} - {{ index }} - {{ item.message }}
 	  </li>
 	</ul>
-	<ul id="v-for-object" class="demo">
-		<li v-for="value in object">
-			{{ value }}
-		</li>
-		<div v-for="(value, key) in object">
-			{{ key }} : {{ value }}
-		</div>
-	</ul>
+	<!--<ul id="v-for-object" class="demo">-->
+		<!--<li v-for="value in object">-->
+			<!--{{ value }}-->
+		<!--</li>-->
+		<!--<div v-for="(value, key) in object">-->
+			<!--{{ key }} : {{ value }}-->
+		<!--</div>-->
+	<!--</ul>-->
     <div id="example-3">
     	<li v-for="n in evenNumbers">{{ n }}</li>
     </div>
@@ -74,6 +74,7 @@
     <div id="example-5">
     	<span v-for="n in 10">{{ n }} </span>
     </div>
+
 </body>
 
 
@@ -225,16 +226,16 @@
 	  }
 	})
 
-	new Vue({
-		el: '#v-for-object',
-		data: {
-			object: {
-				firstName: 'John',
-				lastName: 'Doe',
-				age: 30
-			}
-		}
-	})
+	// new Vue({
+	// 	el: '#v-for-object',
+	// 	data: {
+	// 		object: {
+	// 			firstName: 'John',
+	// 			lastName: 'Doe',
+	// 			age: 30
+	// 		}
+	// 	}
+	// })
 	var example3 = new Vue({
       el: '#example-3',
 	  data: {
@@ -264,5 +265,7 @@
     var example5 = new Vue({
     	el:"#example-5",
     })
+
+
 
 </script>
