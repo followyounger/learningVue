@@ -16,6 +16,39 @@
        <blog-post title="Blogging with me"></blog-post>
        <blog-post title="Why Vue is so fun"></blog-post>
    </div>
+   <!--<div id="blog-post-demo" class="demo">-->
+      <!--<blog-post-->
+         <!--v-for="post in posts"-->
+         <!--v-bind:key="post.id"-->
+         <!--v-bind:title="post.title"-->
+      <!--&gt;-->
+
+      <!--</blog-post>-->
+   <!--</div>-->
+
+    <div>
+        <blog-post-content
+           v-for="post in posts"
+           v-bind:key="post.id"
+           v-bind:post="post"
+        >
+
+        </blog-post-content>
+    </div>
+
+    <!-- 这个是监听父级的信息 -->
+   <div id="blog-posts-events-demo">
+       <div :style="{ fontSize: postFontSize + 'em' }">
+           <blog-post-font
+                   v-for="post in posts"
+                   v-bind:key="post.id"
+                   v-bind:post="post"
+                   v-on:enlarge-text="postFontSize += $event"
+           ></blog-post-font>
+       </div>
+   </div>
+
+
 </body>
 </html>
 
@@ -39,4 +72,67 @@
     var compoment2 = new Vue({
         el: '#compoments-demo2'
     })
+
+    // Vue.compoment('blog-post-', {
+    //     props: ['title'],
+    //     template: '<h3>{{ title }}</h3>'
+    // })
+    // var compoment3 = new Vue({
+    //     el: '#blog-post-demo',
+    //     data: {
+    //         posts: []
+    //     },
+    //     created: function () {
+    //         // Alias the component instance as `vm`, so that we
+    //         // can access it inside the promise function
+    //         var vm = this
+    //         // Fetch our array of posts from an API
+    //         fetch('https://jsonplaceholder.typicode.com/posts')
+    //             .then(function (response) {
+    //                 return response.json()
+    //             })
+    //             .then(function (data) {
+    //                 vm.posts = data
+    //             })
+    //     }
+    // })
+    Vue.component('blog-post-content', {
+        props: ['post'],
+        template: `
+        <div class="blog-post-content">
+          <h3>{{ post.title }}</h3>
+          <div v-html="post.content"></div>
+        </div>
+      `
+    })
+
+
+    Vue.component('blog-post-font', {
+        props: ['post'],
+        template: `
+          <div class="blog-post-font">
+            <h3>{{ post.title }}</h3>
+            <button v-on:click="$emit('enlarge-text', 0.1)">
+               Enlarge text
+            </button>
+            <div v-html="post.content"></div>
+            </div>
+        `
+    })
+
+    var compoment7 = new Vue({
+        el: '#blog-posts-events-demo',
+        data: {
+            posts: [
+                    { id: 1, title: 'My journey with Vue' },
+                    { id: 2, title: 'Blogging with Vue' },
+                    { id: 3, title: 'Why Vue is so fun' }
+                ],
+            postFontSize: 1
+        }
+    })
+    // var compoment12 = new Vue({
+    //     el: '#blog-posts-events-demo'
+    // })
+
 </script>
