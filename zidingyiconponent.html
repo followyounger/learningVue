@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="demo2">
+	   <base-checkbox v-model="lovingVue"></base-checkbox>	
+	</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	Vue.component('base-checkbox', {
+	  model: {
+	    prop: 'checked',
+	    event: 'change'
+	  },
+	  props: {
+	    checked: Boolean
+	  },
+	  template: `
+	    <input
+	      type="checkbox"
+	      v-bind:checked="checked"
+	      v-on:change="$emit('change', $event.target.checked)"
+	    >
+	  `
+	})
+
+    var compoment2 = new Vue({
+        el: '#demo2'
+    })
+</script>

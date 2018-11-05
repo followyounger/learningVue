@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://unpkg.com/pickaday@1.7.0"></script>
+<script src="https://unpkg.com/vue"></script>
+<head>
+	<title>监听多个时间事件</title>
+</head>
+<body>
+  <div id="app">
+  	<input type="date" name="" ref="dateInput" v-model="date">
+  	<input type="date" name="" ref="dateInput" v-model="date">
+  </div>
+</body>
+</html>
+
+<script type="text/javascript">
+	new Vue({
+		el: "#app",
+		data: {
+			date: null
+		},
+		mounted: function () {
+			attachDatepicker: function (refName) {
+				var picker = new Pikaday({
+					field: this.$refs.dateInput,
+					format: 'YYYY-MM-DD'
+				})
+
+				this.$once('hook:beforeDestroy', function () {
+					picker.destroy()
+				})
+			}
+		}
+	})
+</script>
