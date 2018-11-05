@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://unpkg.com/vue"></script>
+<link rel="stylesheet" type="text/css" href="../vue.css">
+<head>
+	<title></title>
+</head>
+<body>
+  <transition name="component-fade" mode="out-in">
+    <component v-bind:is="view"></component>
+  </transition>
+</body>
+</html>
+
+<script type="text/javascript">
+	el: '#transition-component-demo'
+	data: {
+		view: 'v-a'
+	},
+	components: {
+		'v-a': {
+			template: '<div> component A </div>'
+		},
+		'v-b': {
+			template: '<div>Component B</div>'
+		}
+	}
+</script>
